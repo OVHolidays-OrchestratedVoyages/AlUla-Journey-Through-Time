@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journey Through Time: AlUla — OV Holidays</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0E0C0A;
+      --cream: #FDFBF7;
+      --warm: #F7F3EC;
+      --rule: #E2DBD0;
+      --gold: #B8955A;
+      --mid: #6B6560;
+      --blue-deep: #0E0C0A;
+      --blue-mid: #6B6560;
+      --blue-light: #6B6560;
+      --cream-dark: #F7F3EC;
+      --cream-light: #FDFBF7;
+      --text-dark: #0E0C0A;
+      --text-mid: #6B6560;
+      --text-light: #9A9490;
+      --white: #ffffff;
+      --gold-light: #CFA96E;
+      --gold-dark: #9A7740;
+      --font-sans: 'DM Sans', sans-serif;
+      --font-serif: 'Cormorant Garamond', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/au-hero.jpg') center center / cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,8,6,0.55) 0%,
+        rgba(10,8,6,0.25) 45%,
+        rgba(10,8,6,0.75) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 820px;
+    }
+    .hero-logo {
+      width: 180px;
+      margin-bottom: 28px;
+      filter: brightness(0) invert(1);
+      opacity: 0.92;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(44px, 7vw, 80px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-subtitle {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 10px;
+    }
+    .hero-ref {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.50);
+      text-transform: uppercase;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.6);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .hero-scroll span { display: block; width: 1px; height: 50px; background: rgba(255,255,255,0.4); margin: 0 auto; animation: scrollline 2s ease-in-out infinite; }
+    @keyframes scrollline { 0%,100%{opacity:0.3;transform:scaleY(0.5);transform-origin:top;} 50%{opacity:1;transform:scaleY(1);} }
+
+    /* ── NAV ── */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--blue-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .sticky-nav::-webkit-scrollbar { display: none; }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      white-space: nowrap;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 14px 18px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.3s;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-item .nav-date { font-size: 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1; margin-bottom: 4px; color: rgba(255,255,255,0.7); }
+    .nav-item:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+    .nav-item:hover .nav-date { color: var(--gold-light); }
+
+    /* ── INTRO ── */
+    .intro-section {
+      background: var(--white);
+      padding: 80px 24px 70px;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    .container-wide { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .intro-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--text-dark);
+    }
+    .intro-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 40px 0;
+    }
+    .intro-divider::before, .intro-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--cream-dark);
+    }
+    .intro-divider span {
+      font-size: 18px;
+      color: var(--gold);
+    }
+
+    /* ── OVERVIEW TABLE ── */
+    .overview-section {
+      background: var(--cream-dark);
+      padding: 70px 24px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 400;
+      color: var(--blue-deep);
+      margin-bottom: 8px;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-sub { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 40px; }
+
+    .itinerary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .itinerary-table th {
+      background: var(--blue-deep);
+      color: rgba(255,255,255,0.85);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 14px 18px;
+      text-align: left;
+    }
+    .itinerary-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      vertical-align: top;
+      color: var(--text-mid);
+    }
+    .itinerary-table tr:nth-child(even) td { background: rgba(255,255,255,0.5); }
+    .itinerary-table tr:last-child td { border-bottom: none; }
+    .td-date { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: var(--blue-deep); white-space: nowrap; }
+    .td-location { font-weight: 600; font-size: 12px; letter-spacing: 0.5px; color: var(--blue-mid); }
+    .td-activity { line-height: 1.5; }
+    .td-hotel { font-weight: 500; }
+    .td-meals {
+      display: inline-flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .meal-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 2px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .meal-b { background: var(--cream-dark); color: var(--blue-deep); }
+    .meal-l { background: #E8DDD0; color: var(--blue-deep); }
+    .meal-d { background: var(--blue-deep); color: var(--white); }
+    .meal-ai { background: var(--gold); color: var(--white); }
+
+    /* ── HIGHLIGHTS ── */
+    .highlights-section {
+      background: var(--blue-deep);
+      padding: 70px 24px;
+      color: var(--white);
+    }
+    .highlights-section .section-title { color: var(--white); }
+    .highlights-section .section-label { color: var(--gold); }
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+    }
+    .highlight-item {
+      background: var(--blue-deep);
+      padding: 24px 28px;
+    }
+    .highlight-text { font-size: 13px; font-weight: 400; letter-spacing: 0.3px; line-height: 1.6; color: rgba(255,255,255,0.85); display:block; }
+
+    /* ── DAY CARDS — 2 IMAGE VARIANT ── */
+    .days-section { padding: 0; }
+    .day-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 560px;
+    }
+    .day-card:nth-child(even) { direction: rtl; }
+    .day-card:nth-child(even) > * { direction: ltr; }
+
+    /* Two stacked images replacing the single day-image */
+    .day-images {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      min-height: 560px;
+    }
+    .day-img {
+      background: var(--blue-mid) center/cover no-repeat;
+    }
+    .day-img:first-child {
+      border-bottom: 3px solid var(--cream);
+    }
+
+    /* Single image variant — used when one strong image is preferred */
+    .day-image {
+      background: var(--blue-mid) center/cover no-repeat;
+      min-height: 560px;
+    }
+
+    .day-content {
+      background: var(--white);
+      padding: 60px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .day-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 120px;
+      font-weight: 300;
+      line-height: 0.8;
+      color: var(--cream-dark);
+      margin-bottom: 8px;
+      letter-spacing: -4px;
+    }
+    .day-label {
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .day-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 400;
+      color: var(--blue-deep);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .day-meals {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .day-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 20px;
+    }
+    .day-body {
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+    .day-body p { margin-bottom: 14px; }
+    .day-body p:last-child { margin-bottom: 0; }
+    .day-body strong { color: var(--text-dark); font-weight: 600; }
+    .travel-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: var(--cream-dark);
+      border-left: 3px solid var(--gold);
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 12px;
+      color: var(--text-mid);
+    }
+    .travel-info span { display: flex; align-items: center; gap: 8px; }
+    .hotel-block {
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: var(--blue-deep);
+      color: var(--white);
+      border-radius: 0;
+    }
+    .hotel-block .hotel-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .hotel-block .hotel-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; }
+    .hotel-block .hotel-room { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 2px; letter-spacing: 0.5px; }
+
+    .note-block {
+      background: var(--cream-dark);
+      border: 1px solid rgba(184,151,106,0.25);
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 12.5px;
+      color: var(--text-mid);
+      font-style: italic;
+      line-height: 1.65;
+    }
+    .optional-tag {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 3px 8px;
+      margin-bottom: 8px;
+      font-style: normal;
+    }
+
+    /* ── NOTES ── */
+    .notes-section {
+      background: var(--white);
+      padding: 70px 24px;
+    }
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .note-card {
+      padding: 28px 28px;
+      background: var(--cream);
+      border-top: 3px solid var(--blue-deep);
+    }
+    .note-card-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: var(--blue-deep); margin-bottom: 10px; }
+    .note-card-text { font-size: 13px; line-height: 1.7; color: var(--text-mid); }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--blue-deep);
+      padding: 50px 24px 40px;
+      text-align: center;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-logo { width: 140px; margin: 0 auto 20px; filter: brightness(0) invert(1); opacity: 0.7; display: block; }
+    .footer-text { font-size: 11px; letter-spacing: 2px; line-height: 2; }
+    .footer-gold { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .day-card { grid-template-columns: 1fr; }
+      .day-card:nth-child(even) { direction: ltr; }
+      .day-image { min-height: 300px; order: -1 !important; }
+      .day-content { padding: 36px 24px; }
+      .day-number { font-size: 80px; }
+      .itinerary-table { display: block; overflow-x: auto; }
+      .hero-logo { width: 140px; }
+      .nav-item { padding: 12px 12px; }
+      .nav-item .nav-date { font-size: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .intro-section { padding: 50px 20px; }
+      .overview-section, .highlights-section, .notes-section { padding: 50px 20px; }
+      .day-content { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-brand" style="margin-bottom:20px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="76" height="76" style="display:block;margin:0 auto 8px;">
+        <circle cx="80" cy="80" r="74" fill="none" stroke="#FDFBF7" stroke-width="2"/>
+        <circle cx="80" cy="80" r="68" fill="none" stroke="#FDFBF7" stroke-width="0.5"/>
+        <ellipse cx="80" cy="78" rx="38" ry="40" fill="none" stroke="#FDFBF7" stroke-width="4.5"/>
+        <path d="M 62,44 L 80,112 L 98,44" fill="none" stroke="#FDFBF7" stroke-width="4.5" stroke-linejoin="miter" stroke-linecap="square"/>
+      </svg>
+    </div>
+    <p class="hero-eyebrow">An AlUla Journey &middot; Saudi Arabia</p>
+    <h1 class="hero-title">Journey Through <em>Time</em></h1>
+    <p class="hero-subtitle">04 Nights &middot; 05 Days &middot; AlUla</p>
+  </div>
+  <div class="hero-scroll">
+    SCROLL
+    <span></span>
+  </div>
+</section>
+
+<!-- ── STICKY NAV ── -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <a href="#day1" class="nav-item"><span class="nav-date">01</span>Arrival</a>
+    <a href="#day2" class="nav-item"><span class="nav-date">02</span>Heritage</a>
+    <a href="#day3" class="nav-item"><span class="nav-date">03</span>Balloon &amp; Stars</a>
+    <a href="#day4" class="nav-item"><span class="nav-date">04</span>Leisure</a>
+    <a href="#day5" class="nav-item"><span class="nav-date">05</span>Departure</a>
+  </div>
+</nav>
+
+<!-- ── INTRO ── -->
+<section class="intro-section">
+  <div class="container">
+    <p class="section-label">Welcome to AlUla, Saudi Arabia</p>
+    <p class="intro-text">
+      In the north-west of Saudi Arabia, between rose-hued sandstone cliffs and the ruins of ancient kingdoms, AlUla has been a crossroads of civilisation for more than two thousand years. Nabataean traders, Dadanite kings, and Lihyanite scribes all passed through this oasis valley &mdash; and their presence is still legible in the rock.
+    </p>
+    <div class="intro-divider"><span>✦</span></div>
+    <p class="intro-text">
+      Over five days, move from the UNESCO-listed tombs of Hegra to the open-air inscriptions of Jabal Ikmah, from a Michelin-curated lunch in the restored old town to a gourmet dinner beneath one of Arabia&rsquo;s clearest night skies. AlUla is not a resort destination. It is a place where the scale of history makes the present feel very quiet.
+    </p>
+  </div>
+</section>
+
+<!-- ── AT A GLANCE TABLE ── -->
+<section class="overview-section" id="overview">
+  <div class="container-wide">
+    <p class="section-label">At a Glance</p>
+    <h2 class="section-title">Itinerary <em>Outline</em></h2>
+    <p class="section-sub">04 Nights &middot; 05 Days &middot; AlUla, Saudi Arabia</p>
+    <table class="itinerary-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Activity</th>
+          <th>Location</th>
+          <th>Hotel</th>
+          <th>Meals</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="td-date">Day 01</span></td>
+          <td class="td-activity">Arrival AlUla Airport &middot; Transfer to Resort &middot; Dinner at Hotel</td>
+          <td><span class="td-location">AlUla</span></td>
+          <td class="td-hotel">Our Habitas AlUla or Shaden Resort</td>
+          <td><span class="td-meals">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 02</span></td>
+          <td class="td-activity">Hegra Land Rover Tour &middot; Lunch at Jontoos &middot; Maraya Photo Stop &middot; Dadan &amp; Jabal Ikmah &middot; Elephant Rock &middot; Dinner at Somewhere</td>
+          <td><span class="td-location">AlUla</span></td>
+          <td class="td-hotel">Our Habitas AlUla or Shaden Resort</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span><span class="meal-badge meal-l">L</span><span class="meal-badge meal-d">D</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 03</span></td>
+          <td class="td-activity">Hot Air Balloon at Dawn (subject to weather) &middot; Leisure &middot; Sharaan Stargazing Dinner</td>
+          <td><span class="td-location">AlUla</span></td>
+          <td class="td-hotel">Our Habitas AlUla or Shaden Resort</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span><span class="meal-badge meal-d">D</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 04</span></td>
+          <td class="td-activity">Leisure &middot; Old Town Exploration &middot; Optional Activities</td>
+          <td><span class="td-location">AlUla</span></td>
+          <td class="td-hotel">Our Habitas AlUla or Shaden Resort</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 05</span></td>
+          <td class="td-activity">Departure AlUla Airport</td>
+          <td><span class="td-location">&mdash;</span></td>
+          <td class="td-hotel">On Board</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── HOTELS ── -->
+<section class="overview-section" style="padding:70px 24px; background:var(--white);">
+  <div class="container-wide">
+    <p class="section-label">Your Stay</p>
+    <h2 class="section-title">Hotels <em>&amp; Accommodations</em></h2>
+    <table class="itinerary-table" style="margin-top:40px;">
+      <thead>
+        <tr>
+          <th>City</th>
+          <th>Hotel</th>
+          <th>Room</th>
+          <th>Meal Plan</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="td-location">AlUla</span></td>
+          <td class="td-hotel">Our Habitas AlUla</td>
+          <td>Desert Tent or Terrace Room</td>
+          <td>Breakfast Daily</td>
+          <td><strong>4 Nights</strong></td>
+        </tr>
+        <tr>
+          <td><span class="td-location">AlUla</span></td>
+          <td class="td-hotel">Shaden Resort</td>
+          <td>Heritage Room</td>
+          <td>Breakfast Daily</td>
+          <td><strong>4 Nights</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:var(--text-light); margin-top:16px; font-style:italic;">Both properties are nestled within AlUla&rsquo;s sandstone landscape. Your OV advisor will confirm the allocation based on availability at time of booking.</p>
+  </div>
+</section>
+
+<!-- ── HIGHLIGHTS ── -->
+<section class="highlights-section">
+  <div class="container-wide">
+    <p class="section-label">Signature Experiences</p>
+    <h2 class="section-title">Highlights</h2>
+    <div class="highlights-grid">
+      <div class="highlight-item"><span class="highlight-text">Hegra Vintage Land Rover Tour &mdash; Saudi Arabia&rsquo;s first UNESCO World Heritage Site, over 100 Nabataean tombs carved into rose-hued cliffs</span></div>
+      <div class="highlight-item"><span class="highlight-text">Lunch at Jontoos &mdash; Saudi-inspired cuisine by Michelin-starred Chef Jaume Puigdengolas in a restored heritage property in AlUla Old Town</span></div>
+      <div class="highlight-item"><span class="highlight-text">Maraya photo stop &mdash; the world&rsquo;s largest mirrored building, reflecting the surrounding desert cliffs in an optical illusion of scale</span></div>
+      <div class="highlight-item"><span class="highlight-text">Dadan &amp; Jabal Ikmah &mdash; former Dadanite and Lihyanite capitals and Arabia&rsquo;s most significant open-air library of pre-Islamic inscriptions</span></div>
+      <div class="highlight-item"><span class="highlight-text">Elephant Rock at sunset &mdash; a colossal sandstone monolith shaped by time, glowing gold as the light fades over the valley</span></div>
+      <div class="highlight-item"><span class="highlight-text">Dinner at Somewhere &mdash; modern Mediterranean cuisine served under the desert night sky in a sandstone-framed outdoor setting</span></div>
+      <div class="highlight-item"><span class="highlight-text">Hot Air Balloon at dawn &mdash; drift above AlUla&rsquo;s canyons and palm valleys as the first light reveals the desert&rsquo;s shifting hues (weather permitting)</span></div>
+      <div class="highlight-item"><span class="highlight-text">Sharaan Stargazing Dinner &mdash; gourmet dinner in Sharaan Nature Reserve with expert astronomers, beneath one of the clearest night skies in Arabia</span></div>
+      <div class="highlight-item"><span class="highlight-text">AlUla Old Town &mdash; a labyrinth of restored mudbrick houses, cafes, and art spaces that mark a trading hub occupied from the 12th century to the 1980s</span></div>
+      <div class="highlight-item"><span class="highlight-text">Optional: AlUla Old Town Walking Tour with a Rawi guide, Maraya concert or performance, Hidden Valley Hike, and Spa at Habitas Thuraya</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DAY CARDS ── -->
+
+<!-- Day 1 -->
+<section class="day-card" id="day1">
+  <div class="day-image" style="background-image:url('images/au-day1.jpg'); background-position: center center;"></div>
+  <div class="day-content">
+    <div class="day-number">01</div>
+    <div class="day-label">Day 01 &middot; Sunday &middot; Arrival</div>
+    <h2 class="day-title">AlUla &mdash; Arrival in the Ancient Oasis</h2>
+    <div class="day-meals"><span style="font-size:12px;color:var(--text-light);letter-spacing:1px;">No meals included</span></div>
+    <div class="day-divider"></div>
+    <div class="day-body">
+      Arrive this morning at AlUla Airport and clear arrivals. Your local representative will meet you and transfer you directly to your resort &mdash; Our Habitas AlUla or Shaden Resort &mdash; where the sandstone cliffs of the Ashar Valley frame the horizon on every side.
+
+<div class="travel-info">
+  <span><strong>Transfer:</strong> AlUla Airport &mdash; Resort &middot; Approx. 20 minutes</span>
+</div>
+
+Standard room access is from 14:00. Until then, use the resort facilities: pool, restaurant, or simply take in the desert views that define this part of Saudi Arabia.
+
+The remainder of the day is at leisure. Dinner at your hotel&rsquo;s restaurant, where regional flavours sit alongside contemporary cooking techniques, before settling in for your first night under AlUla&rsquo;s skies.
+    </div>
+    <div class="hotel-block">
+      <div class="hotel-label">Hotel</div>
+      <div class="hotel-name">Our Habitas AlUla or Shaden Resort</div>
+      <div class="hotel-room">AlUla &middot; 04 Nights &middot; Dinner at own expense</div>
+    </div>
+  </div>
+</section>
+
+<!-- Day 2 -->
+<section class="day-card" id="day2">
+  <div class="day-image" style="background-image:url('images/au-day2.jpg'); background-position: center center;"></div>
+  <div class="day-content">
+    <div class="day-number">02</div>
+    <div class="day-label">Day 02 &middot; Monday &middot; Heritage</div>
+    <h2 class="day-title">Ancient Wonders &mdash; Hegra, Dadan &amp; Elephant Rock</h2>
+    <div class="day-meals"><span class="meal-badge meal-b">B</span><span class="meal-badge meal-l">L</span><span class="meal-badge meal-d">D</span></div>
+    <div class="day-divider"></div>
+    <div class="day-body">
+      After breakfast, a full day moving through AlUla&rsquo;s most significant archaeological sites and natural landmarks.
+
+<strong>Hegra Vintage Land Rover Tour</strong> &mdash; Begin at the Hegra Visitor Centre and embark on a guided Land Rover tour through Hegra (Mada&rsquo;in Saleh) &mdash; Saudi Arabia&rsquo;s first UNESCO World Heritage Site. More than a hundred Nabataean tombs are carved into rose-coloured sandstone here, including the Tomb of Lihyan, Son of Kuza. The civilisation that built them controlled the incense trade routes between southern Arabia and the Mediterranean world. <em>Approx. 2 hours</em>
+
+<strong>Lunch at Jontoos &mdash; Dar Tantora, The House Hotel</strong> &mdash; A restored mudbrick property in AlUla Old Town. Chef Jaume Puigdengolas presents a refined take on Saudi-inspired cuisine using local ingredients and traditional techniques.
+
+<strong>Maraya Photo Stop</strong> &mdash; A brief stop at the world&rsquo;s largest mirrored building, which reflects the surrounding desert cliffs across its 9,740 square metres of glass facade.
+
+<strong>Dadan &amp; Jabal Ikmah Land Rover Tour</strong> &mdash; Explore the former capitals of the Dadanite and Lihyanite kingdoms. Jabal Ikmah is a canyon wall covered in inscriptions, dedications, and rock art spanning multiple scripts and centuries &mdash; the most concentrated open-air library of pre-Islamic Arabian writing in existence. <em>Approx. 1.5 hours</em>
+
+<strong>Elephant Rock at Sunset</strong> &mdash; Arrive at Jabal AlFil as the afternoon light falls across the valley. The formation stands twelve metres high, shaped by millennia of erosion into the outline of an elephant. Time at leisure here before moving on.
+
+<strong>Dinner at Somewhere</strong> &mdash; A stylish outdoor restaurant offering modern Mediterranean cooking, set among sandstone cliffs with open evening skies above.
+    </div>
+    <div class="hotel-block">
+      <div class="hotel-label">Hotel</div>
+      <div class="hotel-name">Our Habitas AlUla or Shaden Resort</div>
+      <div class="hotel-room">AlUla &middot; Breakfast, Lunch &amp; Dinner included</div>
+    </div>
+  </div>
+</section>
+
+<!-- Day 3 -->
+<section class="day-card" id="day3">
+  <div class="day-image" style="background-image:url('images/au-balloon.jpg'); background-position: center center;"></div>
+  <div class="day-content">
+    <div class="day-number">03</div>
+    <div class="day-label">Day 03 &middot; Tuesday &middot; Balloon &amp; Stars</div>
+    <h2 class="day-title">Dawn Flight &amp; Stargazing in Sharaan</h2>
+    <div class="day-meals"><span class="meal-badge meal-b">B</span><span class="meal-badge meal-d">D</span></div>
+    <div class="day-divider"></div>
+    <div class="day-body">
+      <strong>Hot Air Balloon Flight at Dawn</strong> &mdash; Before first light, transfer to the launch point for a shared balloon flight over AlUla (subject to weather conditions). The flight covers AlUla&rsquo;s canyons, sandstone formations, and palm-filled valleys as daylight arrives across the desert floor. <em>Approx. 1 hour in the air</em>
+
+<div class="note-block">
+  <span class="optional-tag">Weather Dependent</span><br>
+  The balloon flight operates subject to wind and weather conditions on the morning. If the flight does not proceed, your guide will arrange an alternative morning activity.
+</div>
+
+Return to the resort for breakfast and a relaxed morning. The day is yours &mdash; use the resort pool, book a treatment at the Habitas Thuraya Spa, or take a short walk into the surrounding landscape.
+
+<strong>Sharaan Stargazing Dinner</strong> &mdash; As evening falls, transfer to Sharaan Nature Reserve &mdash; a protected area of canyon and cliff where light pollution is minimal and the sky is among the clearest in the Arabian Peninsula. Expert astronomers guide the evening, identifying constellations, planets, and deep-sky objects while a gourmet dinner is served in the open desert. The combination of the terrain, the silence, and the sky is the defining experience of AlUla after dark.
+
+<div class="travel-info">
+  <span><strong>Transfer:</strong> Resort &mdash; Sharaan Nature Reserve &middot; Approx. 20 minutes</span>
+</div>
+    </div>
+    <div class="hotel-block">
+      <div class="hotel-label">Hotel</div>
+      <div class="hotel-name">Our Habitas AlUla or Shaden Resort</div>
+      <div class="hotel-room">AlUla &middot; Breakfast &amp; Dinner included</div>
+    </div>
+  </div>
+</section>
+
+<!-- Day 4 -->
+<section class="day-card" id="day4">
+  <div class="day-image" style="background-image:url('images/au-day4.jpg'); background-position: center center;"></div>
+  <div class="day-content">
+    <div class="day-number">04</div>
+    <div class="day-label">Day 04 &middot; Wednesday &middot; Leisure</div>
+    <h2 class="day-title">A Day at Your Own Pace</h2>
+    <div class="day-meals"><span class="meal-badge meal-b">B</span></div>
+    <div class="day-divider"></div>
+    <div class="day-body">
+      Breakfast at the resort. The day is entirely at leisure &mdash; no fixed schedule, no transfers.
+
+<strong>AlUla Old Town</strong> &mdash; The old town is worth an unhurried morning. Inhabited continuously from before the 12th century until the early 1980s, it holds 900 houses, 500 shops and five town squares. A Rawi (local guide) can lead you through the maze of original stone and mudbrick buildings, or you can walk it independently. The AlUla Fort &mdash; dating to the 10th century &mdash; is visible from most of the town.
+
+The afternoon is free. Lunch and dinner are at your own arrangement from AlUla&rsquo;s growing selection of restaurants and cafes.
+
+<div class="note-block">
+  <span class="optional-tag">Optional Experiences</span><br>
+  Available on request and at additional cost: Hidden Valley Hike in Sharaan Nature Reserve (4 km, approx. 1.5 hours) &middot; Zip-lining across the desert valley &middot; Wellness ritual at Habitas Thuraya Spa &middot; Maraya concert or live performance.
+</div>
+    </div>
+    <div class="hotel-block">
+      <div class="hotel-label">Hotel</div>
+      <div class="hotel-name">Our Habitas AlUla or Shaden Resort</div>
+      <div class="hotel-room">AlUla &middot; Breakfast included &middot; Lunch &amp; Dinner at own expense</div>
+    </div>
+  </div>
+</section>
+
+<!-- Day 5 -->
+<section class="day-card" id="day5">
+  <div class="day-image" style="background-image:url('images/au-day5.jpg'); background-position: center center;"></div>
+  <div class="day-content">
+    <div class="day-number">05</div>
+    <div class="day-label">Day 05 &middot; Thursday &middot; Farewell</div>
+    <h2 class="day-title">AlUla &mdash; Departure</h2>
+    <div class="day-meals"><span class="meal-badge meal-b">B</span></div>
+    <div class="day-divider"></div>
+    <div class="day-body">
+      Breakfast at the resort and a relaxed final morning. Depending on your departure time, a short walk through the nearby landscape or a visit to one of AlUla&rsquo;s outdoor art installations is possible before checkout.
+
+<div class="travel-info">
+  <span><strong>Check-out:</strong> Standard checkout at 12:00. Late checkout subject to availability.</span>
+  <span><strong>Transfer:</strong> Resort &mdash; AlUla Airport &middot; Approx. 20 minutes</span>
+</div>
+
+Your flight departs AlUla Airport back to Dubai. The landscape you have moved through &mdash; its rock, its silence, and the particular quality of the light at different hours of the day &mdash; is not easily replicated elsewhere.
+
+<em>End of Services.</em>
+    </div>
+    <div class="hotel-block">
+      <div class="hotel-label">Hotel</div>
+      <div class="hotel-name">On Board</div>
+      <div class="hotel-room">AlUla Airport &middot; Departure</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOTES ── -->
+<section class="notes-section">
+  <div class="container-wide">
+    <p class="section-label">Before You Go</p>
+    <h2 class="section-title">Important <em>Notes</em></h2>
+    <div class="notes-grid">
+      <div class="note-card">
+        <div class="note-card-title">AlUla Flights</div>
+        <div class="note-card-text">Direct flights between Dubai (DXB) and AlUla (ULH) operate via flydubai and Saudia. Flight schedules vary by season. Confirm your departure dates with your OV advisor before finalising the itinerary, as airport transfer timings are built around your actual flight times.</div>
+      </div>
+      <div class="note-card">
+        <div class="note-card-title">Saudi Entry &amp; Visa</div>
+        <div class="note-card-text">Most nationalities travelling on GCC-linked itineraries or holding UAE residency can obtain a Saudi eVisa online. Requirements vary by passport. Your OV advisor will confirm the entry requirements applicable to your nationality well in advance of travel.</div>
+      </div>
+      <div class="note-card">
+        <div class="note-card-title">Balloon Flight</div>
+        <div class="note-card-text">The hot air balloon experience on Day 3 is subject to weather and wind conditions on the morning. The operator makes a final decision by 05:00 on the day. If the flight does not operate, an alternative activity will be arranged and costs adjusted accordingly.</div>
+      </div>
+      <div class="note-card">
+        <div class="note-card-title">Dress &amp; Culture</div>
+        <div class="note-card-text">AlUla is an active heritage and tourism destination within Saudi Arabia. Respectful dress is appropriate at archaeological sites and in the old town &mdash; covering shoulders and knees. Both hotels are international properties with relaxed dress codes at their pools and restaurants.</div>
+      </div>
+      <div class="note-card">
+        <div class="note-card-title">Check-In &amp; Check-Out</div>
+        <div class="note-card-text">Standard hotel check-in is 14:00. Standard check-out is 12:00. On Day 1, the resort will arrange luggage storage and access to facilities prior to room readiness. Late check-out on Day 5 is subject to availability and may incur additional fees.</div>
+      </div>
+      <div class="note-card">
+        <div class="note-card-title">Gratuities</div>
+        <div class="note-card-text">Gratuities for guides, drivers and restaurant staff are at your discretion and not included in the itinerary costs. We recommend presenting guide and driver tips in an envelope at the conclusion of each day as a token of appreciation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="52" height="52" style="display:block;margin:0 auto 8px;">
+      <circle cx="80" cy="80" r="74" fill="none" stroke="#ffffff" stroke-width="2"/>
+      <circle cx="80" cy="80" r="68" fill="none" stroke="#ffffff" stroke-width="0.5"/>
+      <ellipse cx="80" cy="78" rx="38" ry="40" fill="none" stroke="#ffffff" stroke-width="4.5"/>
+      <path d="M 62,44 L 80,112 L 98,44" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="miter" stroke-linecap="square"/>
+    </svg>
+  </div>
+  <p class="footer-text">
+    <span class="footer-gold">Journey Through Time &middot; An AlUla Journey</span><br>
+    04 Nights &middot; 05 Days &middot; AlUla, Saudi Arabia<br>
+    <br>
+    Prepared by OV Holidays
+  </p>
+</footer>
+
+</body>
+</html>
